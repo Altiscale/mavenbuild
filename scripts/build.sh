@@ -104,13 +104,27 @@ if [ $? -ne "0" ] ; then
   exit -8
 fi
 
-mock -vvv --resultdir=$WORKSPACE/rpmbuild/RPMS/ \
+mkdir -p "$WORKSPACE/var/lib/mock"
+chmod 2755 "$WORKSPACE/var/lib/mock"
+mkdir -p "$WORKSPACE/var/cache/mock"
+chmod 2755 "$WORKSPACE/var/cache/mock"
+sed "s:BASEDIR:$WORKSPACE:g" "$mock_cfg" > "$curr_dir/$mock_cfg_runtime"
+sed -i "s:YOURCOMPONENT_VERSION:$YOURCOMPONENT_VERSION:g" "$curr_dir/$mock_cfg_runtime"
+echo "ok - applying mock config $curr_dir/$mock_cfg_runtime"
+cat "$curr_dir/$mock_cfg_runtime"
+mock -vvv --configdir=$curr_dir -r altiscale-maven-centos-6-x86_64.runtime \
+          --resultdir=$WORKSPACE/rpmbuild/RPMS/ \
           --rebuild $WORKSPACE/rpmbuild/SRPMS/$yourcomponent-$YOURCOMPONENT_VERSION-*.src.rpm
 
 if [ $? -ne "0" ] ; then
   echo "fail - mock RPM build for $yourcomponent failed"
+  mock --clean
+  mock --scrub=all
   exit -9
 fi
+
+mock --clean
+mock --scrub=all
 
 popd
 
