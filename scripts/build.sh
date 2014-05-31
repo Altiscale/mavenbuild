@@ -123,8 +123,8 @@ if [ $? -ne "0" ] ; then
   exit -9
 fi
 
-mock --clean
-mock --scrub=all
+mock --configdir=$curr_dir -r altiscale-maven-centos-6-x86_64.runtim --clean
+mock --configdir=$curr_dir -r altiscale-maven-centos-6-x86_64.runtim --scrub=all
 
 popd
 
