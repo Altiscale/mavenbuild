@@ -8,6 +8,9 @@ setup_host="$curr_dir/setup_host.sh"
 # Define the version of your component in setup_env.sh
 yourcomponent=apache-maven
 yourcomponent_spec="$curr_dir/${yourcomponent}.spec"
+mock_cfg="$curr_dir/altiscale-scala-centos-6-x86_64.cfg"
+mock_cfg_name=$(basename "$mock_cfg")
+mock_cfg_runtime=`echo $mock_cfg_name | sed "s/.cfg/.runtime.cfg/"`
 
 maven_zip_file="$WORKSPACE/${YOURCOMPONENT}-${YOURCOMPONENT_VERSION}.tar.gz"
 maven_url="http://mirror.cc.columbia.edu/pub/software/apache/maven/maven-3/${YOURCOMPONENT_VERSION}/binaries/${YOURCOMPONENT}-${YOURCOMPONENT_VERSION}-bin.tar.gz"
