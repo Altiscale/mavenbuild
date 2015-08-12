@@ -28,7 +28,7 @@ if [ "x${YOURCOMPONENT}" = "x" ] ; then
 fi
 
 if [ "x${YOURCOMPONENT_VERSION}" = "x" ] ; then
-  export YOURCOMPONENT_VERSION=3.3.3
+  export YOURCOMPONENT_VERSION=3.2.1
 fi
 if [ "x${ALTISCALE_RELEASE}" = "x" ] ; then
   export ALTISCALE_RELEASE=3.0.0
