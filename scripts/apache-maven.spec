@@ -11,7 +11,7 @@ Group: Development/Tools
 URL: http://maven.apache.org/
 Source: %{service_name}-%{major_ver}.tar.gz
 BuildRoot: %{_tmppath}/%{service_name}-root
-Requires: jdk >= 1.6
+# Requires: jdk >= 1.6
 Provides: apache-maven
 
 %description

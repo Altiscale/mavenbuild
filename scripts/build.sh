@@ -3,7 +3,6 @@
 curr_dir=`dirname $0`
 curr_dir=`cd $curr_dir; pwd`
 
-setup_host="$curr_dir/setup_host.sh"
 # Define your application/component name here.
 # Define the version of your component in setup_env.sh
 yourcomponent=apache-maven
@@ -38,10 +37,6 @@ if [ "x${WORKSPACE}" = "x" ] ; then
 fi
 
 # Perform sanity check
-if [ ! -f "$curr_dir/setup_host.sh" ]; then
-  echo "warn - $setup_host does not exist, we may not need this if all the libs and RPMs are pre-installed in your build environment"
-fi
-
 if [ ! -e "$yourcomponent_spec" ] ; then
   echo "fail - missing $yourcomponent_spec file, can't continue, exiting"
   exit -9

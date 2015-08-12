@@ -34,9 +34,9 @@ if [ "x${ALTISCALE_RELEASE}" = "x" ] ; then
   export ALTISCALE_RELEASE=3.0.0
 fi
 
-# The build time here is par tof the release number
+# The build time here is part of the release number
 # It is monotonic increasing
-BUILD_TIME=1
+BUILD_TIME=$(date +%Y%m%d%H%M)
 export BUILD_TIME
 
 
