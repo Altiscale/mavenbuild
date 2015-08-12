@@ -60,9 +60,9 @@ pushd %{buildroot}%{_datadir}/java/%{service_name}
       ln -s "%{_datadir}/java/%{service_name}/$i" "%{buildroot}%{_datadir}/%{service_name}/lib/$i"
    done
 popd
-install -m 644 boot/plexus-classworlds-2.5.1.jar  %{buildroot}%{_datadir}/java/%{service_name}
-ln -s %{_datadir}/java/%{service_name}/plexus-classworlds-2.5.1.jar \
-   %{buildroot}%{_datadir}/%{service_name}/boot/plexus-classworlds-2.5.1.jar
+install -m 644 boot/plexus-classworlds-2.5.2.jar  %{buildroot}%{_datadir}/java/%{service_name}
+ln -s %{_datadir}/java/%{service_name}/plexus-classworlds-2.5.2.jar \
+   %{buildroot}%{_datadir}/%{service_name}/boot/plexus-classworlds-2.5.2.jar
 
 #ln -s /usr/local/lib/libboost_date_time-mt.a /usr/local/lib/libboost_date_time.a
 #ln -s /usr/local/lib/libboost_date_time-mt.so /usr/local/lib/libboost_date_time.so
