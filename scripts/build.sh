@@ -13,7 +13,7 @@ mock_cfg_name=$(basename "$mock_cfg")
 mock_cfg_runtime=`echo $mock_cfg_name | sed "s/.cfg/.runtime.cfg/"`
 
 maven_zip_file="$WORKSPACE/${YOURCOMPONENT}-${YOURCOMPONENT_VERSION}.tar.gz"
-maven_url="http://mirror.cc.columbia.edu/pub/software/apache/maven/maven-3/${YOURCOMPONENT_VERSION}/binaries/${YOURCOMPONENT}-${YOURCOMPONENT_VERSION}-bin.tar.gz"
+maven_url="http://archive.apache.org/dist/maven/maven-3/${YOURCOMPONENT_VERSION}/binaries/${YOURCOMPONENT}-${YOURCOMPONENT_VERSION}-bin.tar.gz"
 
 if [ -f "$curr_dir/setup_env.sh" ]; then
   source "$curr_dir/setup_env.sh"
@@ -21,7 +21,7 @@ fi
 
 # Update variables
 maven_zip_file="$WORKSPACE/${YOURCOMPONENT}-${YOURCOMPONENT_VERSION}.tar.gz"
-maven_url="http://mirror.cc.columbia.edu/pub/software/apache/maven/maven-3/${YOURCOMPONENT_VERSION}/binaries/${YOURCOMPONENT}-${YOURCOMPONENT_VERSION}-bin.tar.gz"
+maven_url="http://archive.apache.org/dist/maven/maven-3/${YOURCOMPONENT_VERSION}/binaries/${YOURCOMPONENT}-${YOURCOMPONENT_VERSION}-bin.tar.gz"
 
 if [ "x${YOURCOMPONENT}" = "x" ] ; then
   yourcomponent=example
@@ -58,20 +58,20 @@ cd $WORKSPACE
 
 if [ -f "$maven_zip_file" ] ; then
   fhash=$(md5sum "$maven_zip_file" | cut -d" " -f1)
-  if [ "x${fhash}" = "xaaef971206104e04e21a3b580d9634fe" ] ; then
+  if [ "x${fhash}" = "x794b3b7961200c542a7292682d21ba36" ] ; then
     echo "ok - found prev downloaded file, hash looks good, use it directly"
   else
-    echo "warn - maven.tar.gz corrupted with $fhash <> aaef971206104e04e21a3b580d9634fe, re-downloading"
+    echo "warn - maven.tar.gz corrupted with $fhash <> 794b3b7961200c542a7292682d21ba36, re-downloading"
     wget --output-document=$(basename $maven_zip_file) "$maven_url"
   fi
 else
   echo "ok - downloading maven.tar.gz"
   wget --output-document=$(basename $maven_zip_file) "$maven_url"
 fi
-# Only applies to Boost installation, delete previous installationif exist.
+
 # This machine shouldn't have existing maven instllation.
 if [ -d $WORKSPACE/${YOURCOMPONENT}-${YOURCOMPONENT_VERSION}/ ] ; then
-  echo "warn - uninstalling previous version of Boost"
+  echo "warn - uninstalling previous version of $${YOURCOMPONENT}"
 fi
 #tar -xzf 
 #mv maven_* apache-maven

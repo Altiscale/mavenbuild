@@ -28,10 +28,10 @@ if [ "x${YOURCOMPONENT}" = "x" ] ; then
 fi
 
 if [ "x${YOURCOMPONENT_VERSION}" = "x" ] ; then
-  export YOURCOMPONENT_VERSION=3.2.1
+  export YOURCOMPONENT_VERSION=3.3.3
 fi
 if [ "x${ALTISCALE_RELEASE}" = "x" ] ; then
-  export ALTISCALE_RELEASE=2.0.0
+  export ALTISCALE_RELEASE=3.0.0
 fi
 
 # The build time here is par tof the release number
